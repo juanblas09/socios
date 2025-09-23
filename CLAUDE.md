@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a system built with Angular 17 and Express.js. The application uses NX monorepo tooling and follows a full-stack architecture with server-side rendering (SSR).
+This is a membership management system (Gestión de Socios) built with Angular 17 and Express.js. The application allows organizations to manage their members, including registration, profile management, and membership status tracking. It uses NX monorepo tooling and follows a full-stack architecture with server-side rendering (SSR).   
 
 ## Key Technologies
 
