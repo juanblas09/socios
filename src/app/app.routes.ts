@@ -5,6 +5,12 @@ import { adminGuard } from './guards/admin.guard';
 
 export const ROUTE_TREE = {
 	DASHBOARD: 'dashboard',
+	SOCIOS: 'dashboard/socios',
+	PAGOS: 'dashboard/pagos',
+	CUOTAS: 'dashboard/cuotas',
+	CATEGORIAS: 'dashboard/categorias',
+	REPORTES: 'dashboard/reportes',
+	USUARIOS: 'dashboard/usuarios',
 	UNAUTHORIZED: 'unauthorized'
 };
 
@@ -16,6 +22,32 @@ export const appRoutes: Routes = [
 				path: ROUTE_TREE.DASHBOARD,
 				loadComponent: () => import('./pages/dashboard/dashboard.component').then((m) => m.DashboardComponent),
 				canActivate: [adminGuard],
+				children: [
+					{
+						path: 'socios',
+						loadComponent: () => import('./pages/socios/socios.component').then((m) => m.SociosComponent),
+					},
+					{
+						path: 'pagos',
+						loadComponent: () => import('./pages/pagos/pagos.component').then((m) => m.PagosComponent),
+					},
+					{
+						path: 'cuotas',
+						loadComponent: () => import('./pages/cuotas/cuotas.component').then((m) => m.CuotasComponent),
+					},
+					{
+						path: 'categorias',
+						loadComponent: () => import('./pages/categorias/categorias.component').then((m) => m.CategoriasComponent),
+					},
+					{
+						path: 'reportes',
+						loadComponent: () => import('./pages/reportes/reportes.component').then((m) => m.ReportesComponent),
+					},
+					{
+						path: 'usuarios',
+						loadComponent: () => import('./pages/usuarios/usuarios.component').then((m) => m.UsuariosComponent),
+					},
+				]
 			},
 			{
 				path: '',

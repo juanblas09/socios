@@ -7,7 +7,7 @@ import {
   lucideCreditCard,
   lucideCalendar,
   lucideTag,
-  lucideBarChart3,
+  lucideChartBar,
   lucideUserCog
 } from '@ng-icons/lucide';
 
@@ -27,7 +27,7 @@ interface SidebarItem {
       lucideCreditCard,
       lucideCalendar,
       lucideTag,
-      lucideBarChart3,
+      lucideChartBar,
       lucideUserCog
     })
   ],
@@ -40,7 +40,7 @@ export class SidebarComponent {
     { label: 'Pagos', route: '/dashboard/pagos', icon: 'lucideCreditCard' },
     { label: 'Cuotas', route: '/dashboard/cuotas', icon: 'lucideCalendar' },
     { label: 'Categorías', route: '/dashboard/categorias', icon: 'lucideTag' },
-    { label: 'Reportes', route: '/dashboard/reportes', icon: 'lucideBarChart3' },
+    { label: 'Reportes', route: '/dashboard/reportes', icon: 'lucideChartBar' },
     { label: 'Usuarios', route: '/dashboard/usuarios', icon: 'lucideUserCog' }
   ];
 }
