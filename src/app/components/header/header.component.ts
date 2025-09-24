@@ -9,27 +9,23 @@ import { RouterModule } from '@angular/router';
 	standalone: true,
 	imports: [CommonModule, LogoutButtonComponent, RouterModule],
 	template: `
-		<a [routerLink]="['']" >
-			<header class="bg-primary-dark">
-				<div class="mx-5 max-w-screen-lg px-4 py-4 sm:px-6 sm:py-8 md:max-w-screen-lg lg:px-8">
-					<h1 class="text-2xl font-bold text-white">GESTIÓN DE SOCIOS</h1>
-				</div>
-			</header>
-		</a>
-		<div class="bg-primary text-white">
-			<div
-				class="mx-5 grid max-w-screen-lg grid-cols-2 content-center px-4 py-2 sm:px-6 sm:py-4 md:max-w-screen-lg lg:px-8"
-			>
-				@if (user()) {
-					<div class="content-center text-xl">Hola, {{ user().firstName }}!</div>
-				}
-				<div class="flex justify-end">
-					@if (isPlatformBrowser) {
-						<socios-logout-button />
-					}
+		<header class="bg-primary-dark text-white">
+			<div class="mx-5 max-w-screen-lg px-4 py-3 sm:px-6 md:max-w-screen-lg lg:px-8">
+				<div class="flex items-center justify-between">
+					<a [routerLink]="['']" class="flex-shrink-0">
+						<h1 class="text-xl sm:text-2xl font-bold">GESTIÓN DE SOCIOS</h1>
+					</a>
+					<div class="flex items-center gap-4">
+						@if (user()) {
+							<span class="text-sm sm:text-base">Hola, {{ user().firstName }}!</span>
+						}
+						@if (isPlatformBrowser) {
+							<socios-logout-button />
+						}
+					</div>
 				</div>
 			</div>
-		</div>
+		</header>
 	`,
 	styles: ``,
 })
