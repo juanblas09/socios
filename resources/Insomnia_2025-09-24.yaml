@@ -1,0 +1,142 @@
+type: collection.insomnia.rest/5.0
+name: Scratch Pad
+meta:
+  id: wrk_scratchpad
+  created: 1758662102822
+  modified: 1758662102822
+  description: ""
+collection:
+  - name: User
+    meta:
+      id: fld_91afe8d767554a2c9336752465d1746c
+      created: 1758662481373
+      modified: 1758662481373
+      sortKey: -1758662481373
+      description: ""
+    children:
+      - url: localhost:4200/api/user/id/1
+        name: Get User by ID
+        meta:
+          id: req_a5a4b34784054c419aa6f3f25afec972
+          created: 1758662128195
+          modified: 1758662487686
+          isPrivate: false
+          description: ""
+          sortKey: -1758662487642
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:4200/api/user/email/jbtschopp@gmail.com
+        name: Get User by email
+        meta:
+          id: req_11b19862eb464e0184f25614d0b10ad3
+          created: 1758662283780
+          modified: 1758662493215
+          isPrivate: false
+          description: ""
+          sortKey: -1758662487742
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Member
+    meta:
+      id: fld_9f7e0141e09b42f987ce816133b0dc01
+      created: 1758662499830
+      modified: 1758662499830
+      sortKey: -1758662499830
+      description: ""
+    children:
+      - url: localhost:4200/api/member
+        name: Get All Members
+        meta:
+          id: req_45534b711db146a495ef3cf88646c091
+          created: 1758662357482
+          modified: 1758662517265
+          isPrivate: false
+          description: ""
+          sortKey: -1758662515360
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:4200/api/member/id/1
+        name: Get Members by ID
+        meta:
+          id: req_85ae3d2615fe4cdf9489097eaed5566b
+          created: 1758662433207
+          modified: 1758662518858
+          isPrivate: false
+          description: ""
+          sortKey: -1758662515460
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:4200/api/member/number/1
+        name: Get Members by MemberNumber
+        meta:
+          id: req_37e5b28b83ac4454bbb5edb32c6bf5af
+          created: 1758662463517
+          modified: 1758662515300
+          isPrivate: false
+          description: ""
+          sortKey: -1758662515260
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1758662112976
+    modified: 1758662112976
+environments:
+  name: Base Environment
+  meta:
+    id: env_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1758662112975
+    modified: 1758662112975
+    isPrivate: false
