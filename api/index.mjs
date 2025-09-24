@@ -1,2 +1,2 @@
-const server = await import('../dist/ticketera/server/server.mjs');
+const server = await import('../dist/socios/server/server.mjs');
 export default server.app();
