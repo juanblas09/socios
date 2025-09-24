@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 import { authorizedGuard } from './guards/authorized.guard';
+import { adminGuard } from './guards/admin.guard';
 
 export const ROUTE_TREE = {
 	DASHBOARD: 'dashboard',
@@ -14,6 +15,7 @@ export const appRoutes: Routes = [
 			{
 				path: ROUTE_TREE.DASHBOARD,
 				loadComponent: () => import('./pages/dashboard/dashboard.component').then((m) => m.DashboardComponent),
+				canActivate: [adminGuard],
 			},
 			{
 				path: '',
