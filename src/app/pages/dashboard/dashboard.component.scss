@@ -1,0 +1,40 @@
+.dashboard-layout {
+  @apply min-h-screen bg-gray-50;
+  @apply flex;
+}
+
+.dashboard-content {
+  @apply flex-1 ml-64;
+  @apply flex flex-col;
+}
+
+.content-header {
+  @apply bg-white shadow-sm border-b border-gray-200;
+  @apply px-6 py-4;
+}
+
+.page-title {
+  @apply text-2xl font-bold text-gray-900;
+}
+
+.content-body {
+  @apply flex-1 p-6;
+}
+
+.welcome-message {
+  @apply text-lg text-gray-700 mb-6;
+  @apply bg-white p-6 rounded-lg shadow-sm border border-gray-200;
+}
+
+.members-section {
+  @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6;
+}
+
+.members-section h2 {
+  @apply text-xl font-semibold text-gray-900 mb-4;
+}
+
+.member-card {
+  @apply bg-gray-50 p-3 rounded-lg border border-gray-200 mb-2;
+  @apply hover:bg-gray-100 transition-colors duration-200;
+}
