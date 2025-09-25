@@ -83,5 +83,8 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [{ cssnano: {} }],
+	plugins: [
+		require('daisyui'),
+		{ cssnano: {} }
+	],
 };

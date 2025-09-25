@@ -82,6 +82,7 @@
 		"browser-sync": "^3.0.2",
 		"concurrently": "^8.2.2",
 		"cypress": "^11.0.0",
+		"daisyui": "^5.1.19",
 		"drizzle-kit": "^0.20.17",
 		"eslint": "8.57.0",
 		"eslint-config-prettier": "9.0.0",
