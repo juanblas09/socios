@@ -51,7 +51,7 @@ export const appRoutes: Routes = [
 			},
 			{
 				path: '',
-				redirectTo: ROUTE_TREE.DASHBOARD,
+				redirectTo: ROUTE_TREE.SOCIOS,
 				pathMatch: 'full',
 			},
 		],
