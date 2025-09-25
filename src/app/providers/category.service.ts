@@ -9,10 +9,10 @@ import { Category } from "../interfaces/category.interface";
     providedIn: 'root'
 })
 export class CategoriesService {
-    private readonly prefix = `/api/member`
+    private readonly prefix = `/api/category`;
     private http = inject(HttpClient);
 
     getAll(): Observable<Category[]> {
-        return this.http.get<Category[]>(`${this.prefix}/categories`)
+        return this.http.get<Category[]>(`${this.prefix}`)
     }
 }
