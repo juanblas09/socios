@@ -1,56 +1,40 @@
-.sidebar {
-  @apply w-64 bg-gray-900 text-white left-0 top-0 z-30;
-  @apply flex flex-col shadow-lg h-full;
+// Mobile drawer styles
+.drawer-side {
+  @apply fixed inset-y-0 left-0 z-40 w-64 transform transition-transform duration-300 ease-in-out;
+  @apply lg:hidden;
 
-  // Hide on small screens by default, show on md+ screens
-  @apply hidden md:flex;
+  // Initially hidden on mobile
+  @apply -translate-x-full;
+}
 
-  // Mobile responsive styles
-  @media (max-width: 1023px) {
-    @apply fixed transform -translate-x-full transition-transform duration-300 ease-in-out;
-
-    &.mobile-open {
-      @apply translate-x-0 flex;
-    }
+// Desktop sidebar - always visible on large screens
+@media (min-width: 1024px) {
+  .drawer-side {
+    @apply relative transform-none;
   }
 }
 
-.sidebar-title {
-  @apply text-xl font-bold text-white;
+// Active menu item styles
+.menu li > a.active {
+  @apply bg-primary text-primary-content;
 }
 
-.sidebar-nav {
-  @apply flex-1 py-4;
+// Menu hover effects
+.menu li > a:hover:not(.active) {
+  @apply bg-base-300;
 }
 
-.nav-list {
-  @apply space-y-1;
+// Menu title styling
+.menu-title {
+  @apply text-xs font-semibold uppercase tracking-wider opacity-60;
 }
 
-.nav-item {
-  @apply mx-3;
+// Badge hover effects
+.badge {
+  @apply transition-all duration-200;
 }
 
-.nav-link {
-  @apply flex items-center px-3 py-3 text-gray-300 rounded-lg;
-  @apply hover:bg-gray-800 hover:text-white transition-colors duration-200;
-  @apply focus:outline-none focus:ring-2 focus:ring-primary;
-  text-decoration: none;
-
-  &.active {
-    @apply bg-primary-dark text-white;
-  }
-}
-
-.nav-icon {
-  @apply w-5 h-5 mr-3 flex-shrink-0;
-}
-
-.nav-label {
-  @apply text-sm font-medium;
-}
-
-.sidebar-overlay {
-  @apply fixed inset-0 bg-black bg-opacity-50 z-20;
-  @apply md:hidden;
+// Drawer overlay
+.drawer-overlay {
+  @apply absolute inset-0 bg-black/50;
 }

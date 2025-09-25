@@ -6,34 +6,33 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="page-header">
-      <div class="page-header-content">
-        <h1 class="page-title">{{ title() }}</h1>
-        @if (subtitle()) {
-          <p class="page-subtitle">{{ subtitle() }}</p>
-        }
+    <div class="hero bg-base-200 py-8">
+      <div class="hero-content text-left w-full">
+        <div class="max-w-full">
+          <div class="flex items-center justify-between">
+            <div>
+              <h1 class="text-3xl font-bold text-base-content">{{ title() }}</h1>
+              @if (subtitle()) {
+                <p class="py-2 text-base-content/70">{{ subtitle() }}</p>
+              }
+            </div>
+            @if (showBreadcrumb()) {
+              <div class="breadcrumbs text-sm">
+                <ul>
+                  <li><a class="link link-hover">Dashboard</a></li>
+                  <li class="text-base-content/70">{{ title() }}</li>
+                </ul>
+              </div>
+            }
+          </div>
+        </div>
       </div>
     </div>
   `,
-  styles: `
-    .page-header {
-      @apply w-full bg-white border-b-1 border-gray-200 px-6 py-4;
-    }
-
-    .page-header-content {
-      @apply max-w-full;
-    }
-
-    .page-title {
-      @apply text-2xl font-bold text-gray-900 mb-0;
-    }
-
-    .page-subtitle {
-      @apply text-sm text-gray-600 mt-1;
-    }
-  `
+  styles: ``
 })
 export class PageHeaderComponent {
   title = input.required<string>();
   subtitle = input<string>();
+  showBreadcrumb = input<boolean>(true);
 }

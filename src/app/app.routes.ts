@@ -24,6 +24,10 @@ export const appRoutes: Routes = [
 				canActivate: [adminGuard],
 				children: [
 					{
+						path: '',
+						loadComponent: () => import('./pages/dashboard-home/dashboard-home.component').then((m) => m.DashboardHomeComponent),
+					},
+					{
 						path: 'socios',
 						loadComponent: () => import('./pages/socios/socios.component').then((m) => m.SociosComponent),
 					},
@@ -51,7 +55,7 @@ export const appRoutes: Routes = [
 			},
 			{
 				path: '',
-				redirectTo: ROUTE_TREE.SOCIOS,
+				redirectTo: ROUTE_TREE.DASHBOARD,
 				pathMatch: 'full',
 			},
 		],

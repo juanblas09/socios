@@ -1,21 +1,188 @@
-<aside class="sidebar" [class.mobile-open]="sidebarService.isOpen()">
-  <nav class="sidebar-nav">
-    <ul class="nav-list">
-      <li class="nav-item" *ngFor="let item of sidebarItems">
+<!-- Drawer for mobile -->
+<div class="drawer-side z-40" [class.translate-x-0]="sidebarService.isOpen()" [class.-translate-x-full]="!sidebarService.isOpen()">
+  <div class="drawer-overlay" (click)="sidebarService.close()"></div>
+
+  <!-- Sidebar content -->
+  <aside class="min-h-full w-64 bg-base-200">
+    <!-- Logo/Header -->
+    <div class="flex items-center gap-2 px-6 py-4 border-b border-base-300">
+      <ng-icon name="lucideUsers" class="w-8 h-8 text-primary"></ng-icon>
+      <div>
+        <h1 class="text-xl font-bold text-base-content">Gestión</h1>
+        <p class="text-sm text-base-content/60">de Socios</p>
+      </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <div class="p-4">
+      <ul class="menu bg-base-100 w-full rounded-box">
+        <!-- Dashboard Home -->
+        <li>
+          <a
+            routerLink="/dashboard"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"
+            (click)="onNavLinkClick()"
+            class="flex items-center gap-3"
+          >
+            <ng-icon name="lucideHouse" class="w-5 h-5"></ng-icon>
+            <span>Dashboard</span>
+          </a>
+        </li>
+
+        <div class="divider my-2"></div>
+
+        <!-- Main Menu Items -->
+        <li class="menu-title">
+          <span>Gestión Principal</span>
+        </li>
+        @for (item of mainMenuItems; track item.route) {
+          <li>
+            <a
+              [routerLink]="item.route"
+              routerLinkActive="active"
+              (click)="onNavLinkClick()"
+              class="flex items-center gap-3 justify-between"
+            >
+              <div class="flex items-center gap-3">
+                <ng-icon [name]="item.icon" class="w-5 h-5"></ng-icon>
+                <span>{{ item.label }}</span>
+              </div>
+              @if (item.badge) {
+                <span class="badge badge-sm" [class]="'badge-' + item.badgeColor">
+                  {{ item.badge }}
+                </span>
+              }
+            </a>
+          </li>
+        }
+
+        <div class="divider my-2"></div>
+
+        <!-- Admin Menu Items -->
+        <li class="menu-title">
+          <span>Administración</span>
+        </li>
+        @for (item of adminMenuItems; track item.route) {
+          <li>
+            <a
+              [routerLink]="item.route"
+              routerLinkActive="active"
+              (click)="onNavLinkClick()"
+              class="flex items-center gap-3"
+            >
+              <ng-icon [name]="item.icon" class="w-5 h-5"></ng-icon>
+              <span>{{ item.label }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <!-- Footer Info -->
+    <div class="absolute bottom-0 left-0 right-0 p-4">
+      <div class="bg-primary/10 rounded-lg p-3">
+        <div class="flex items-center gap-2">
+          <ng-icon name="lucideInfo" class="w-4 h-4 text-primary"></ng-icon>
+          <div class="text-sm">
+            <div class="font-medium text-base-content">Sistema v2.0</div>
+            <div class="text-xs text-base-content/60">Gestión de Socios</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- Desktop Sidebar -->
+<aside class="hidden lg:flex flex-col w-64 min-h-screen bg-base-200 border-r border-base-300">
+  <!-- Logo/Header -->
+  <div class="flex items-center gap-2 px-6 py-4 border-b border-base-300">
+    <ng-icon name="lucideUsers" class="w-8 h-8 text-primary"></ng-icon>
+    <div>
+      <h1 class="text-xl font-bold text-base-content">Gestión</h1>
+      <p class="text-sm text-base-content/60">de Socios</p>
+    </div>
+  </div>
+
+  <!-- Navigation Menu -->
+  <div class="flex-1 p-4">
+    <ul class="menu bg-base-100 w-full rounded-box">
+      <!-- Dashboard Home -->
+      <li>
         <a
-          [routerLink]="item.route"
+          routerLink="/dashboard"
           routerLinkActive="active"
-          class="nav-link"
-          (click)="onNavLinkClick()"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="flex items-center gap-3"
         >
-          <ng-icon [name]="item.icon" class="nav-icon"></ng-icon>
-          <span class="nav-label">{{ item.label }}</span>
+          <ng-icon name="lucideHouse" class="w-5 h-5"></ng-icon>
+          <span>Dashboard</span>
         </a>
       </li>
+
+      <div class="divider my-2"></div>
+
+      <!-- Main Menu Items -->
+      <li class="menu-title">
+        <span>Gestión Principal</span>
+      </li>
+      @for (item of mainMenuItems; track item.route) {
+        <li>
+          <a
+            [routerLink]="item.route"
+            routerLinkActive="active"
+            class="flex items-center gap-3 justify-between"
+          >
+            <div class="flex items-center gap-3">
+              <ng-icon [name]="item.icon" class="w-5 h-5"></ng-icon>
+              <span>{{ item.label }}</span>
+            </div>
+            @if (item.badge) {
+              <span class="badge badge-sm" [class]="'badge-' + item.badgeColor">
+                {{ item.badge }}
+              </span>
+            }
+          </a>
+        </li>
+      }
+
+      <div class="divider my-2"></div>
+
+      <!-- Admin Menu Items -->
+      <li class="menu-title">
+        <span>Administración</span>
+      </li>
+      @for (item of adminMenuItems; track item.route) {
+        <li>
+          <a
+            [routerLink]="item.route"
+            routerLinkActive="active"
+            class="flex items-center gap-3"
+          >
+            <ng-icon [name]="item.icon" class="w-5 h-5"></ng-icon>
+            <span>{{ item.label }}</span>
+          </a>
+        </li>
+      }
     </ul>
-  </nav>
+  </div>
+
+  <!-- Footer Info -->
+  <div class="p-4">
+    <div class="bg-primary/10 rounded-lg p-3">
+      <div class="flex items-center gap-2">
+        <ng-icon name="lucideInfo" class="w-4 h-4 text-primary"></ng-icon>
+        <div class="text-sm">
+          <div class="font-medium text-base-content">Sistema v2.0</div>
+          <div class="text-xs text-base-content/60">Gestión de Socios</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </aside>
 
+<!-- Mobile overlay -->
 @if (sidebarService.isOpen()) {
-  <div class="sidebar-overlay" (click)="sidebarService.close()"></div>
+  <div class="lg:hidden fixed inset-0 z-30 bg-black/50" (click)="sidebarService.close()"></div>
 }

@@ -9,13 +9,17 @@ import {
   lucideCalendar,
   lucideTag,
   lucideChartBar,
-  lucideUserCog
+  lucideUserCog,
+  lucideHouse,
+  lucideInfo
 } from '@ng-icons/lucide';
 
 interface SidebarItem {
   label: string;
   route: string;
   icon: string;
+  badge?: string;
+  badgeColor?: string;
 }
 
 @Component({
@@ -29,7 +33,9 @@ interface SidebarItem {
       lucideCalendar,
       lucideTag,
       lucideChartBar,
-      lucideUserCog
+      lucideUserCog,
+      lucideHouse,
+      lucideInfo
     })
   ],
   templateUrl: './sidebar.component.html',
@@ -38,10 +44,13 @@ interface SidebarItem {
 export class SidebarComponent {
   sidebarService = inject(SidebarService);
 
-  sidebarItems: SidebarItem[] = [
-    { label: 'Socios', route: '/dashboard/socios', icon: 'lucideUsers' },
-    { label: 'Pagos', route: '/dashboard/pagos', icon: 'lucideCreditCard' },
-    { label: 'Cuotas', route: '/dashboard/cuotas', icon: 'lucideCalendar' },
+  mainMenuItems: SidebarItem[] = [
+    { label: 'Socios', route: '/dashboard/socios', icon: 'lucideUsers', badge: '1,234', badgeColor: 'primary' },
+    { label: 'Pagos', route: '/dashboard/pagos', icon: 'lucideCreditCard', badge: 'Nuevo', badgeColor: 'success' },
+    { label: 'Cuotas', route: '/dashboard/cuotas', icon: 'lucideCalendar', badge: '23', badgeColor: 'warning' }
+  ];
+
+  adminMenuItems: SidebarItem[] = [
     { label: 'Categorías', route: '/dashboard/categorias', icon: 'lucideTag' },
     { label: 'Reportes', route: '/dashboard/reportes', icon: 'lucideChartBar' },
     { label: 'Usuarios', route: '/dashboard/usuarios', icon: 'lucideUserCog' }
