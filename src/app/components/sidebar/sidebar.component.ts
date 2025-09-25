@@ -45,9 +45,9 @@ export class SidebarComponent {
   sidebarService = inject(SidebarService);
 
   mainMenuItems: SidebarItem[] = [
-    { label: 'Socios', route: '/dashboard/socios', icon: 'lucideUsers', badge: '1,234', badgeColor: 'primary' },
-    { label: 'Pagos', route: '/dashboard/pagos', icon: 'lucideCreditCard', badge: 'Nuevo', badgeColor: 'success' },
-    { label: 'Cuotas', route: '/dashboard/cuotas', icon: 'lucideCalendar', badge: '23', badgeColor: 'warning' }
+    { label: 'Socios', route: '/dashboard/socios', icon: 'lucideUsers' },
+    { label: 'Pagos', route: '/dashboard/pagos', icon: 'lucideCreditCard'},
+    { label: 'Cuotas', route: '/dashboard/cuotas', icon: 'lucideCalendar'}
   ];
 
   adminMenuItems: SidebarItem[] = [
