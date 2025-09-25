@@ -18,9 +18,6 @@ import { PageHeaderComponent } from '../../components/page-header/page-header.co
     .page-container {
       @apply p-6;
     }
-    .page-title {
-      @apply text-2xl font-bold text-gray-900 mb-4;
-    }
   `]
 })
 export class CuotasComponent {}
