@@ -1,0 +1,21 @@
+<aside class="sidebar" [class.mobile-open]="sidebarService.isOpen()">
+  <nav class="sidebar-nav">
+    <ul class="nav-list">
+      <li class="nav-item" *ngFor="let item of sidebarItems">
+        <a
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          class="nav-link"
+          (click)="onNavLinkClick()"
+        >
+          <ng-icon [name]="item.icon" class="nav-icon"></ng-icon>
+          <span class="nav-label">{{ item.label }}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</aside>
+
+@if (sidebarService.isOpen()) {
+  <div class="sidebar-overlay" (click)="sidebarService.close()"></div>
+}
