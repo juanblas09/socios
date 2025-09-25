@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PageHeaderComponent } from '../../components/page-header/page-header.component';
 
 @Component({
   selector: 'socios-cuotas',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PageHeaderComponent],
   template: `
     <div class="page-container">
-      <h2 class="page-title">Cuotas</h2>
-      <p>Gestión de cuotas - En desarrollo</p>
+      <socios-page-header title="Cuotas" subtitle="Gestión de cuotas y mensualidades" />
+      <div class="content-body">
+        <p>Gestión de cuotas - En desarrollo</p>
+      </div>
     </div>
   `,
   styles: [`

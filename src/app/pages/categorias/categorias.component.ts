@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PageHeaderComponent } from '../../components/page-header/page-header.component';
 
 @Component({
   selector: 'socios-categorias',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PageHeaderComponent],
   template: `
     <div class="page-container">
-      <h2 class="page-title">Categorías</h2>
-      <p>Gestión de categorías - En desarrollo</p>
+      <socios-page-header title="Categorías" subtitle="Gestión de categorías de socios" />
+      <div class="content-body">
+        <p>Gestión de categorías - En desarrollo</p>
+      </div>
     </div>
   `,
   styles: [`

@@ -1,8 +1,4 @@
-<aside class="sidebar">
-  <div class="sidebar-header">
-    <h2 class="sidebar-title">Gestión de Socios</h2>
-  </div>
-
+<aside class="sidebar" [class.mobile-open]="sidebarService.isOpen()">
   <nav class="sidebar-nav">
     <ul class="nav-list">
       <li class="nav-item" *ngFor="let item of sidebarItems">
@@ -10,6 +6,7 @@
           [routerLink]="item.route"
           routerLinkActive="active"
           class="nav-link"
+          (click)="onNavLinkClick()"
         >
           <ng-icon [name]="item.icon" class="nav-icon"></ng-icon>
           <span class="nav-label">{{ item.label }}</span>
@@ -18,3 +15,7 @@
     </ul>
   </nav>
 </aside>
+
+@if (sidebarService.isOpen()) {
+  <div class="sidebar-overlay" (click)="sidebarService.close()"></div>
+}
