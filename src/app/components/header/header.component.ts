@@ -13,13 +13,13 @@ import { lucideMenu } from '@ng-icons/lucide';
 	imports: [CommonModule, LogoutButtonComponent, RouterModule, NgIconComponent],
 	providers: [provideIcons({ lucideMenu })],
 	template: `
-		<header class="bg-primary-dark text-white">
+		<header class="bg-primary text-primary-content">
 			<div class="mx-5 max-w-screen-lg px-4 py-3 sm:px-6 md:max-w-screen-lg lg:px-8">
 				<div class="flex items-center justify-between">
 					<div class="flex items-center gap-4">
 						<button
 							(click)="sidebarService.toggle()"
-							class="md:hidden p-2 rounded-lg hover:bg-primary-light transition-colors duration-200"
+							class="md:hidden p-2 rounded-lg hover:bg-primary-focus transition-colors duration-200"
 							aria-label="Toggle menu"
 						>
 							<ng-icon name="lucideMenu" class="w-6 h-6"></ng-icon>

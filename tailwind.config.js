@@ -87,4 +87,36 @@ module.exports = {
 		require('daisyui'),
 		{ cssnano: {} }
 	],
+	daisyui: {
+		themes: [
+			{
+				'boca': {
+					'primary': '#003f7f',           // Azul Boca oficial
+					'primary-focus': '#002a5c',     // Azul más oscuro
+					'primary-content': '#ffffff',    // Blanco para texto en azul
+					'secondary': '#ffcd00',         // Amarillo Boca oficial
+					'secondary-focus': '#e6b800',   // Amarillo más oscuro
+					'secondary-content': '#000000',  // Negro para texto en amarillo
+					'accent': '#1a73e8',            // Azul de acento
+					'accent-focus': '#1557b8',      // Azul de acento oscuro
+					'accent-content': '#ffffff',     // Blanco para texto en acento
+					'neutral': '#2a2e37',           // Gris neutro
+					'neutral-focus': '#16181d',     // Gris neutro oscuro
+					'neutral-content': '#ffffff',    // Blanco para texto neutro
+					'base-100': '#ffffff',          // Fondo blanco principal
+					'base-200': '#f8fafc',          // Fondo gris muy claro
+					'base-300': '#e2e8f0',          // Fondo gris claro
+					'base-content': '#1f2937',      // Texto principal oscuro
+					'info': '#3abff8',              // Azul información
+					'info-content': '#ffffff',      // Blanco para texto info
+					'success': '#36d399',           // Verde éxito
+					'success-content': '#ffffff',   // Blanco para texto éxito
+					'warning': '#fbbd23',           // Amarillo advertencia
+					'warning-content': '#000000',   // Negro para texto advertencia
+					'error': '#f87272',             // Rojo error
+					'error-content': '#ffffff',     // Blanco para texto error
+				}
+			}
+		]
+	},
 };
