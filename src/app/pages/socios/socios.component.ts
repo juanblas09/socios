@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageHeaderComponent } from '../../components/page-header/page-header.component';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
@@ -15,27 +15,10 @@ import {
   lucideCreditCard,
   lucideTrash2
 } from '@ng-icons/lucide';
-
-interface SocioStat {
-  label: string;
-  value: string;
-  description: string;
-  icon: string;
-  color: string;
-}
-
-interface Member {
-  id: number;
-  name: string;
-  email: string;
-  memberNumber: string;
-  category: string;
-  categoryColor: string;
-  status: string;
-  statusColor: string;
-  lastPayment: string;
-  avatar: string;
-}
+import {toSignal} from "@angular/core/rxjs-interop";
+import {MemberService} from "../../providers/member.service";
+import {CategoriesService} from "../../providers/category.service";
+import {map} from "rxjs";
 
 @Component({
   selector: 'socios-socios',
@@ -56,101 +39,84 @@ interface Member {
       lucideTrash2
     })
   ],
-  templateUrl: './socios.component.html',
-  styleUrl: './socios.component.scss'
+  template: `
+    <div class="page-container">
+      
+      <socios-page-header
+          title="Socios"
+          subtitle="Gestión de asociados, altas y bajas"
+      ></socios-page-header>
+      <div class="content-body">
+        <div class="card bg-base-100 shadow-sm">
+          <table class="table table-pin-rows bg-base-200">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th>Categoria</th>
+              <th>DNI</th>
+              <th>Socio Boca</th>
+              <th>Localidad</th>
+              <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+              @for (member of members() || []; track member.id) {
+                <tr>
+                  <td>{{ member.memberNumber }}</td>
+                  <td>{{ member.lastName }}, {{ member.firstName }}</td>
+                  <td>{{ categoriesMap()?.get(member.categoryId) || 'Sin categoría' }}</td>
+                  <td>{{ member.dni }}</td>
+                  <td>{{ member.clubMember === 'active' ? 'Activo' : member.clubMember === 'affiliate' ? 'Adherente' : 'No socio' }}</td>
+                  <td>{{ member.address }}</td>
+                  <td>
+                    <button class="btn btn-sm btn-ghost btn-square" title="Ver">
+                      <ng-icon name="lucideEye"></ng-icon>
+                    </button>
+                    <button class="btn btn-sm btn-ghost btn-square" title="Editar">
+                      <ng-icon name="lucidePencil"></ng-icon>
+                    </button>
+                    <button class="btn btn-sm btn-ghost btn-square" title="Cuotas">
+                      <ng-icon name="lucideCreditCard"></ng-icon>
+                    </button>
+                    <button class="btn btn-sm btn-ghost btn-square" title="Eliminar">
+                      <ng-icon name="lucideTrash2"></ng-icon>
+                    </button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  `,
+  styles: [`
+    .page-container {
+      @apply p-6;
+    }
+  `]
 })
 export class SociosComponent {
-  sociosStats: SocioStat[] = [
-    {
-      label: 'Total Socios',
-      value: '1,234',
-      description: 'Miembros registrados',
-      icon: 'lucideUsers',
-      color: 'primary'
-    },
-    {
-      label: 'Socios Activos',
-      value: '1,156',
-      description: 'Al día con pagos',
-      icon: 'lucideUserCheck',
-      color: 'success'
-    },
-    {
-      label: 'Socios Inactivos',
-      value: '78',
-      description: 'Con pagos vencidos',
-      icon: 'lucideUserX',
-      color: 'error'
-    },
-    {
-      label: 'Socios Premium',
-      value: '234',
-      description: 'Membresía premium',
-      icon: 'lucideCrown',
-      color: 'warning'
-    }
-  ];
+  memberService = inject(MemberService);
+  categoriesService = inject(CategoriesService);
 
-  mockMembers: Member[] = [
-    {
-      id: 1,
-      name: 'Juan Pérez',
-      email: 'juan.perez@email.com',
-      memberNumber: '#S001',
-      category: 'Premium',
-      categoryColor: 'warning',
-      status: 'Activo',
-      statusColor: 'success',
-      lastPayment: '15/12/2024',
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Juan'
-    },
-    {
-      id: 2,
-      name: 'María González',
-      email: 'maria.gonzalez@email.com',
-      memberNumber: '#S002',
-      category: 'Básico',
-      categoryColor: 'info',
-      status: 'Activo',
-      statusColor: 'success',
-      lastPayment: '10/12/2024',
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Maria'
-    },
-    {
-      id: 3,
-      name: 'Carlos Rodríguez',
-      email: 'carlos.rodriguez@email.com',
-      memberNumber: '#S003',
-      category: 'Estándar',
-      categoryColor: 'primary',
-      status: 'Vencido',
-      statusColor: 'error',
-      lastPayment: '25/11/2024',
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Carlos'
-    },
-    {
-      id: 4,
-      name: 'Ana Martínez',
-      email: 'ana.martinez@email.com',
-      memberNumber: '#S004',
-      category: 'Premium',
-      categoryColor: 'warning',
-      status: 'Activo',
-      statusColor: 'success',
-      lastPayment: '20/12/2024',
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Ana'
-    },
-    {
-      id: 5,
-      name: 'Luis Fernández',
-      email: 'luis.fernandez@email.com',
-      memberNumber: '#S005',
-      category: 'Básico',
-      categoryColor: 'info',
-      status: 'Pendiente',
-      statusColor: 'warning',
-      lastPayment: '05/12/2024',
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Luis'
-    }
-  ];
+  // Traemos todos los socios
+  members = toSignal(this.memberService.getAll());
+
+  // Traemos todas las categorías
+  categories = toSignal(this.categoriesService.getAll());
+
+  // Mapeamos las categorías para tener un acceso rápido por id
+  categoriesMap = toSignal(
+      this.categoriesService.getAll().pipe(
+          map(categories => {
+            const map = new Map<number, string>();
+            categories.forEach(category => {
+              map.set(category.id, category.name);
+            });
+            return map;
+          })
+      )
+  )
 }
